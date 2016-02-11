@@ -1,3 +1,6 @@
+//Benjamin Bancala and Michael Shafran
+//Software Methodology Spring 2016
+
 package application;
 
 import java.io.EOFException;
@@ -66,6 +69,8 @@ public class Controller {
 	
 	private ObservableList<Song> obsList;
 	private ObservableList<Song> tempList;
+	String songName;
+	String artistName;
 	
 	Song song1;
 	
@@ -96,6 +101,7 @@ public class Controller {
 				@Override
 				public void handle(ActionEvent event){
 					boolean sameSong = false;
+					boolean sameArtist = false;
 					Song song2 = new Song("","","","");
 					if((textSong.getText().toString()).equals("")){
 						textSongRequired.setText("Required");
@@ -105,19 +111,23 @@ public class Controller {
 						}else{
 							
 							for(int i = 0; i<obsList.size();i++){
-								if((textSong.getText().toString()).equals(obsList.get(i).song)){
+								if((textSong.getText().toString()).equals(obsList.get(i).song)&&((textArtist.getText().toString()).equals(obsList.get(i).artist))){
 									sameSong = true;
-									break;
+									sameArtist = true;
 								}
+								
 							}
 							
-							if(sameSong ==  true){
+							if(sameSong ==  true&& sameArtist ==true){
 								textSongRequired.setText("Exists");
+								
 							}else{
 								song2.song = textSong.getText().toString().trim();
 								song2.artist=textArtist.getText().toString().trim();
 								song2.album=textAlbum.getText().toString().trim();
 								song2.year=textYear.getText().toString().trim();
+								songName = song2.song;
+								artistName = song2.artist;
 								song1 = song2;
 								obsList.add(song2);
 								listview.setItems(obsList);
@@ -127,6 +137,7 @@ public class Controller {
 								textArtist.clear();
 								textAlbum.clear();
 								textYear.clear();
+								textSongRequired.setText("");
 							}
 							
 						}
@@ -152,9 +163,16 @@ public class Controller {
 						}
 					}
 					 
+					int x=0;
+					for(int i = 0; i<obsList.size();i++){
+						if((songName.equals(obsList.get(i).song))&&(artistName.equals(obsList.get(i).artist))){
+							x=i;
+						}
+					}
+					listview.getSelectionModel().clearAndSelect(x);
+
+					listview.getSelectionModel().select(x);
 					
-					listview.getSelectionModel().clearSelection();
-					listview.getSelectionModel().select(0);
 				}
 					
 			});
@@ -162,8 +180,21 @@ public class Controller {
 			buttonDelete.setOnAction(new EventHandler<ActionEvent>(){
 				@Override
 				public void handle(ActionEvent event){
-					song1 = listview.getSelectionModel().getSelectedItem();				
+					int x=0;
+					song1 = listview.getSelectionModel().getSelectedItem();	
+					for(int i = 0; i< obsList.size();i++){
+						if(song1.equals(obsList.get(i))){
+							x=i;
+						}
+					}
 					obsList.remove(song1);
+					if(x!=obsList.size()){
+						listview.getSelectionModel().clearAndSelect(x);
+						
+					}else{
+						listview.getSelectionModel().clearAndSelect(x-1);
+					}
+					
 					listview.refresh();
 				}
 			});
@@ -199,12 +230,14 @@ public class Controller {
 						}
 					}
 					
+					
 				}
 			});
 			buttonUpdate.setOnAction(new EventHandler<ActionEvent>(){
 				@Override
 				public void handle(ActionEvent event){
 					boolean sameSong = false;
+					boolean sameArtist = false;
 					if((textSong.getText().toString()).equals("")){
 						textSongRequired.setText("Required");
 					}else{
@@ -213,13 +246,13 @@ public class Controller {
 						}else{
 
 							for(int i = 0; i<obsList.size();i++){
-								if((textSong.getText().toString()).equals(obsList.get(i).song)){
+								if((textSong.getText().toString()).equals(obsList.get(i).song)&&((textArtist.getText().toString()).equals(obsList.get(i).artist))){
 									sameSong = true;
-									break;
+									sameArtist = true;
 								}
 							}
 							
-							if(sameSong ==  true){
+							if(sameSong ==  true&&sameArtist){
 								textSongRequired.setText("Exists");
 							}else{
 								buttonUpdate.visibleProperty().set(false);
@@ -227,20 +260,24 @@ public class Controller {
 								buttonEdit.visibleProperty().set(true);
 								song1 = listview.getSelectionModel().getSelectedItem();
 								
+								
 								song1.song = textSong.getText().toString().trim();
 								song1.artist=textArtist.getText().toString().trim();
 								song1.album=textAlbum.getText().toString().trim();
 								song1.year=textYear.getText().toString().trim();
+								
+								songName = song1.song;
+								artistName = song1.artist;
 								
 								textSong.setText("");
 								textArtist.setText("");
 								textAlbum.setText("");
 								textYear.setText("");
 								listview.refresh();
-								int righthere = listview.getSelectionModel().getSelectedIndex();
-								listview.getSelectionModel().clearSelection();
-								listview.getSelectionModel().select(righthere);
+								
+								textSongRequired.setText("");
 							}
+							
 						}
 					}
 					if(obsList.size()>1){
@@ -262,6 +299,17 @@ public class Controller {
 							tempList.remove(0);
 						}
 					}
+					 
+					int x=0;
+					for(int i = 0; i<obsList.size();i++){
+						if((songName.equals(obsList.get(i).song))&&(artistName.equals(obsList.get(i).artist))){
+							x=i;
+						}
+					}
+					listview.getSelectionModel().clearAndSelect(x);
+					listview.getSelectionModel().select(x);
+					
+					
 				}
 			});
 			
@@ -351,10 +399,10 @@ public class Controller {
 			labelAlbum.setText(song1.album);
 			labelYear.setText(song1.year);
 		}else{
-			labelSong.setText("text");
-			labelArtist.setText("text");
-			labelAlbum.setText("text");
-			labelYear.setText("text");
+			labelSong.setText("");
+			labelArtist.setText("");
+			labelAlbum.setText("");
+			labelYear.setText("");
 		}
 		
 	}

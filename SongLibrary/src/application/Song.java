@@ -1,3 +1,6 @@
+//Benjamin Bancala and Michael Shafran
+//Software Methodology Spring 2016
+
 package application;
 
 public class Song implements java.io.Serializable {
