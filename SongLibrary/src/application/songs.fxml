@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <AnchorPane layoutY="2.0" prefHeight="353.0" prefWidth="569.0">
+         <children>
+            <SplitPane dividerPositions="0.47157190635451507" layoutX="200.0" layoutY="70.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ListView id="list" fx:id="listview" layoutX="-12.0" layoutY="25.0" prefHeight="298.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane>
+                     <children>
+                        <SplitPane dividerPositions="0.39255014326647564" layoutX="59.0" layoutY="49.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="313.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="21.0" layoutY="14.0" text="Song Name:" />
+                                    <Label layoutX="21.0" layoutY="37.0" text="Artist Name:" />
+                                    <Label layoutX="21.0" layoutY="63.0" text="Album Name:" />
+                                    <Label layoutX="21.0" layoutY="86.0" text="Year:" />
+                                    <Label id="textSong" fx:id="labelSong" layoutX="142.0" layoutY="14.0" text="Text" />
+                                    <Label id="textArtist" fx:id="labelArtist" layoutX="142.0" layoutY="37.0" text="Text" />
+                                    <Label id="textAlbum" fx:id="labelAlbum" layoutX="142.0" layoutY="63.0" text="Text" />
+                                    <Label id="textYear" fx:id="labelYear" layoutX="142.0" layoutY="86.0" text="Text" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Button id="add" fx:id="buttonAdd" layoutX="21.0" layoutY="6.0" mnemonicParsing="false" text="Add To List" />
+                                    <Button id="delete" fx:id="buttonDelete" layoutX="119.0" layoutY="6.0" mnemonicParsing="false" text="Delete Selected Item" />
+                                    <TextField fx:id="textSong" layoutX="96.0" layoutY="47.0" promptText="Enter a song name" />
+                                    <TextField fx:id="textArtist" layoutX="96.0" layoutY="80.0" promptText="Enter an artist name" />                           
+                                    <TextField fx:id="textAlbum" layoutX="96.0" layoutY="114.0" promptText="(Optional)" />
+                                    <TextField fx:id="textYear" layoutX="96.0" layoutY="147.0" promptText="(Optional)" />
+                                    <Text layoutX="29.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Song:" />
+                                    <Text layoutX="29.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artist:" />
+                                    <Text layoutX="25.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album:" />
+                                    <Text layoutX="32.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year:" />
+                                    <Label fx:id="textSongRequired" layoutX="245.0" layoutY="51.0" />
+                                    <Label fx:id="textArtistRequired" layoutX="245.0" layoutY="84.0" />
+                                    <Button fx:id="buttonEdit" layoutX="90.0" layoutY="183.0" mnemonicParsing="false" text="Edit" />
+                                    <Button fx:id="buttonUpdate" layoutX="159.0" layoutY="183.0" mnemonicParsing="false" text="Update" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
