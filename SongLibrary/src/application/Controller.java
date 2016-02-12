@@ -3,25 +3,12 @@
 
 package application;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import java.io.*;
+import javafx.collections.*;
+import javafx.event.*;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.stage.*;
 
 public class Controller {
 	@FXML
@@ -315,7 +302,6 @@ public class Controller {
 		    			   f.createNewFile();
 							Ser();
 		    		   } catch (IOException e1) {
-		    			   // TODO Auto-generated catch block
 		    			   e1.printStackTrace();
 		    		   }
 		    		   
@@ -360,13 +346,10 @@ public class Controller {
 			        } catch (EOFException e) {
 			            break;
 			        } catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 			    }
